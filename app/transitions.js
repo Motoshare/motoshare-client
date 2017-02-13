@@ -1,0 +1,26 @@
+export default function(){
+  this.transition(
+    this.fromRoute('index'),
+    this.toRoute('login'),
+    this.use('toUp'),
+    this.reverse('toDown')
+  );
+  this.transition(
+    this.fromRoute('index'),
+    this.toRoute('register'),
+    this.use('toUp'),
+    this.reverse('toDown')
+  );
+  this.transition(
+  	this.fromRoute('login'),
+  	this.toRoute('register'),
+  	this.use('toUp'),
+  	this.reverse('toDown')
+  );
+  this.transition(
+    this.fromRoute('login'),
+    this.toRoute('passwordreset'),
+    this.use('toUp'),
+    this.reverse('toDown')
+  );
+}

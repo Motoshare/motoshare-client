@@ -1,0 +1,23 @@
+<body class="site loginBG">
+<div class="content">
+<section class="login-form">
+	{{#link-to 'index'}}
+	<img src="assets/images/logoyellow.png" class="img-responsive"/>
+	{{/link-to}}
+          {{#if errors}}
+          <h3 class="text-danger">{{errors-text errors}}</h3>
+    {{/if}}
+<form {{action "authenticate" on="submit"}}>
+	  {{input id='identification' class="form-control input-lg" placeholder='Email Address'  value=identification required=true}}
+	  {{input id='password' class="form-control input-lg" type='password' placeholder='Password'  value=password required=true}}
+<button class="btn btn-lg btn-customlogin btn-block" type="submit">Log In</button>
+</form>
+{{#link-to 'register' class="pull-left"}}
+Need to register?
+{{/link-to}}
+{{#link-to 'passwordreset' class="pull-right"}}
+Forgot Password?
+{{/link-to}}
+</section>
+</div>
+</body>

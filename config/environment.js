@@ -18,6 +18,26 @@ module.exports = function(environment) {
       // when it is created
     }
   };
+  
+  ENV['ember-simple-auth-token'] = {
+    serverTokenEndpoint: 'https://motoshare-v1.appspot.com/api/login/',
+    identificationField: 'email',
+    passwordField: 'password',
+    tokenPropertyName: 'access_token',
+    timeFactor: 1000,
+    authorizationPrefix: 'Bearer ',
+    authorizationHeaderName: 'Authorization',
+    headers: {},
+  };
+
+  ENV.contentSecurityPolicy = {
+    'default-src': "'none'",
+    'script-src': "'self' 'unsafe-eval' *.googleapis.com maps.gstatic.com",
+    'font-src': "'self' fonts.gstatic.com",
+    'connect-src': "'self' maps.gstatic.com",
+    'img-src': "'self' *.googleapis.com maps.gstatic.com csi.gstatic.com",
+    'style-src': "'self' 'unsafe-inline' fonts.googleapis.com maps.gstatic.com"
+  };
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
