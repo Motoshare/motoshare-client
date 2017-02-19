@@ -1,6 +1,9 @@
 .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
     outline: 0;
 }
+.mousey{
+  cursor: pointer;
+}
 .site {
 	display: flex;
 	flex-direction: column;
@@ -20,6 +23,13 @@
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
+}
+.mobileloginBG {
+  background: url('/assets/images/mobileBG.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 .registerBG {
 	background: url('/assets/images/registerBG.png') no-repeat center center fixed;
@@ -147,4 +157,39 @@ fieldset[disabled] .btn-white-outline.active {
 }
 .navbar-brand{
   padding-top: 2px;
+}
+/* Mobile Navigation */
+.login-form-mobile {
+  margin-top: 25%;
+    color: #5d5d5d;
+    padding: 6px;
+}
+.login-form-mobile input {
+    font-size: 18px;
+    margin: 5px 0;
+}
+.login-form-mobile .div {
+  text-align: center;
+}
+
+.login-form-mobile img {
+    display: block;
+    margin: 0 auto;
+}
+.login-form-mobile a {
+  color: #fff;
+}
+.login-form-mobile h4{
+  color: #fff;
+}
+/* Google maps related Styles  */
+.iw-container .iw-title {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  padding: 10px;
+  background-color: #48b5e9;
+  color: white;
+  margin: 0;
+  border-radius: 2px 2px 0 0;
 }

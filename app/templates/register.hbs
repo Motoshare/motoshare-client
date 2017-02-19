@@ -1,3 +1,30 @@
+{{#if media.isMobile}}
+<body class="site mobileloginBG">
+<section class="login-form-mobile">
+	{{#link-to 'index'}}
+	<img src="assets/images/logoyellow.png" class="img-responsive"/>
+	{{/link-to}}
+          {{#if errors}}
+          <h2 class="text-danger">{{errors-text errors}}</h2>
+          {{/if}}
+<form {{action "register" on="submit"}}>
+	{{input id='firstName' class='form-control input-lg' placeholder='First Name' value=firstName required=true}}
+	{{input id='lastName' class='form-control input-lg' placeholder='Last Name' value=lastName required=true}}
+	  {{input id='newEmail' class="form-control input-lg" placeholder='Email Address'  value=newEmail required=true}}
+	  {{input id='newpassword' class="form-control input-lg" type='password' placeholder='Password'  value=newpassword required=true}}
+	  {{input id='repeatpassword' class='form-control input-lg' type='password' placeholder='Repeat Password' value=repeatpassword required=true}}
+	  {{#if confirmSame}}
+		{{else}}
+	    <div class="text-danger">Passwords do not match.</div>
+	{{/if}}
+<button class="btn btn-lg btn-customlogin btn-block" type="submit">Register</button>
+</form>
+{{#link-to 'login' class="pull-left"}}
+Already have an account?
+{{/link-to}}
+</section>
+</body>
+{{else}}
 <body class="site indexBG">
 <div class="content">
 <section class="login-form">
@@ -25,3 +52,4 @@ Already have an account?
 </section>
 </div>
 </body>
+{{/if}}

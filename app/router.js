@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('profile');
   this.route('motorcycles');
   this.route('passwordreset');
+  this.route('motorcycle', { path: '/motorcycle/:motorcycle_id'});
 });
 
 export default Router;

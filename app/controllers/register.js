@@ -18,7 +18,7 @@ export default Ember.Controller.extend({
 			var lastName = this.get('lastName');
 			var email = this.get('newEmail');
 			var password = this.get('newpassword');
-			Ember.$.ajax('https://motoshare-v1.appspot.com/api/register', {
+			Ember.$.ajax('http://localhost:8080/api/register', {
 				type: 'POST',
 				contentType: 'application/json; charset=utf-8',
 				dataType: 'json',

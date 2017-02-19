@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import hbs from 'htmlbars-inline-precompile';
 
 export default Ember.Component.extend({ 
     store: Ember.inject.service(), 
@@ -12,11 +13,12 @@ export default Ember.Component.extend({
                 var latlng = {lat, lng};
                 var model = cycle.get('model');
                 var thumb = cycle.get('media')[0];
-                self.createMarker(latlng, make, model, thumb);
+                var id = cycle.get('id');
+                self.createMarker(latlng, make, model, thumb, id);
             });
         });
     },
-    createMarker: function(latlng, make, model, thumb) {
+    createMarker: function(latlng, make, model, thumb, id) {
         var map = window.map;
         var icon = "https://storage.googleapis.com/motoshare-v1.appspot.com/general_gfx/icon_pin.png"
         var marker = new google.maps.Marker({
@@ -28,12 +30,17 @@ export default Ember.Component.extend({
         var infoWindow = new google.maps.InfoWindow();
 
         google.maps.event.addListener(marker, 'click', function(){
-            var infoContent = '<h3>' + make + ' ' + model + '</h3>' + '<img src="'+ thumb +'" width="200px"/><p>See More Details</p>';
+            var infoContent = '<div class="iw-container"><h3 class="iw-title">' + make + ' ' + model + '</h3>' + 
+            '<img src="'+ thumb +'" width="200px"/><div class="mousey"onclick="openBikePanel('+id+')">See More Info</div></div>';
             console.log(infoContent);
             infoWindow.setContent(infoContent);
             infoWindow.open(map, marker);
         });
         marker.setMap(map);
+    },
+    openBikePanel: function(){
+        console.log('Fired');
+        window.openBikePanel(this, this.openBikePanel);
     },
     insertMap: function() {
     	var container = Ember.$('.map-canvas')[0];
@@ -52,6 +59,11 @@ export default Ember.Component.extend({
               infoWindow.close();
         });
 
-    }.on('didInsertElement')
+    }.on('didInsertElement'),
 
+    actions: {
+        openBikePanel: function(id){
+            console.log('Bike'+ id);
+        }
+    }
 });
