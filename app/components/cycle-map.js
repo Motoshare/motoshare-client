@@ -3,6 +3,7 @@ import hbs from 'htmlbars-inline-precompile';
 
 export default Ember.Component.extend({ 
     store: Ember.inject.service(), 
+    popup: Ember.inject.service,
     displayCycles: function() {
         var self = this;
         var cycles = this.get('store').findAll('motorcycle').then(function(motorcycle){
@@ -31,7 +32,7 @@ export default Ember.Component.extend({
 
         google.maps.event.addListener(marker, 'click', function(){
             var infoContent = '<div class="iw-container"><h3 class="iw-title">' + make + ' ' + model + '</h3>' + 
-            '<img src="'+ thumb +'" width="200px"/><div class="mousey"onclick="openBikePanel('+id+')">See More Info</div></div>';
+            '<img src="'+ thumb +'" width="200px"/><p>See More Info</p></div>';
             console.log(infoContent);
             infoWindow.setContent(infoContent);
             infoWindow.open(map, marker);

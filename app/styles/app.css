@@ -188,8 +188,8 @@ fieldset[disabled] .btn-white-outline.active {
   font-size: 22px;
   font-weight: 400;
   padding: 10px;
-  background-color: #48b5e9;
-  color: white;
+  background-color: #fff;
+  color: #000;
   margin: 0;
   border-radius: 2px 2px 0 0;
 }
