@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
         authenticator = 'authenticator:jwt';
  
       this.get('session').authenticate(authenticator, credentials).then(function(){
-      	_this.transitionToRoute('profile');
+      	_this.transitionToRoute('app.profile');
       }, function() {
       	_this.set('errors', 'Oops, there was an error. Please check your email and password.');
       });

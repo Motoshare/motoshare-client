@@ -1,7 +1,13 @@
 <body>
 {{nav-bar}}
-{{#cycle-map latitude="37.4652743" longitude="-122.4378986"}}
+{{from-elsewhere name="right-sidebar"}}
+{{#if map}}
+{{#cycle-map latitude=lat longitude=lng}}
 {{#each model as |motorcycle| }}
 {{/each}}
 {{/cycle-map}}
+{{else}}
+<h2>List View</h2>
+{{/if}}
+{{outlet}}
 </body>

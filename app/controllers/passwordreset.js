@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
 		passwordreset: function() {
 			var _this = this;
 			var email = this.get('resetemail');
-			Ember.$.ajax('http://localhost:8080/api/passwordreset', {
+			Ember.$.ajax('http://localhost:8080/api/passwordreset' /*https://motoshare-v1.appspot.com/api/passwordreset'*/, {
 				type: 'POST',
 				contentType: 'application/json; charset=utf-8',
 				dataType: 'json',

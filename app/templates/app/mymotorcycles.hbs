@@ -1,0 +1,38 @@
+<div class="appBody">
+<h3>My Motorcycles</h3>
+<div class="row">
+<hr class="">
+<div class="container">
+    <div class="row">
+    	{{#each model as |motorcycle|}}
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <img src="http://placehold.it/358x200/EEE" class="">
+                <div class="caption">
+                	{{#link-to 'motorcycle' motorcycle}}
+                     <h4 class="">{{motorcycle.year}} {{motorcycle.make}} {{motorcycle.model}}</h4>
+                     {{/link-to}}
+                    <p class="">{{motorcycle.description}}</p> 
+                    {{#link-to "motorcycle.edit" motorcycle}}
+                    <div class="btn btn-default btn-xs pull-right" role="button">
+                    	<i class="glyphicon glyphicon-edit"></i> Edit</div>  
+                    	{{/link-to}}
+                    	<div class="btn btn-default btn-xs" role="button"{{action 'addPhotos' motorcycle}}>Add Photos</div>
+
+                </div>
+            </div>
+        </div>
+        {{/each}}
+       </div>
+
+</div>
+
+	<div class="pull-right add-bike">
+		{{#link-to 'app.addmotorcycle'}}
+		<button class="btn btn-warning">Add Motorcycle</button>
+		{{/link-to}}
+	</div>
+	{{!-- row  --}}
+</div>
+{{!-- appbody --}}
+</div>

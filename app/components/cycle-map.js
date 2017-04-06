@@ -1,9 +1,23 @@
 import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
 
-export default Ember.Component.extend({ 
+export default Ember.Component.extend({
+    messageBus: Ember.inject.service('message-bus'), 
     store: Ember.inject.service(), 
     popup: Ember.inject.service,
+    geolocation: Ember.inject.service(),
+    currentLocation: '',
+    init() {
+    this._super(...arguments);
+    var _this = this;
+    this.get('messageBus').subscribe('setCoords', this, this.setCoords);
+    // this.get('geolocation').getLocation().then(function(geoObject) {
+    //         console.log(geoObject);
+    //         var lat = geoObject.coords.latitude;
+    //         var lng = geoObject.coords.longitude;
+    //         _this.setCoords(lat, lng);
+    //     });
+    },
     displayCycles: function() {
         var self = this;
         var cycles = this.get('store').findAll('motorcycle').then(function(motorcycle){
@@ -32,16 +46,12 @@ export default Ember.Component.extend({
 
         google.maps.event.addListener(marker, 'click', function(){
             var infoContent = '<div class="iw-container"><h3 class="iw-title">' + make + ' ' + model + '</h3>' + 
-            '<img src="'+ thumb +'" width="200px"/><p>See More Info</p></div>';
+            '<img src="'+ thumb +'" width="200px"/></div><a href="/motorcycle/'+id+'"><p>See More Info</p></a>';
             console.log(infoContent);
             infoWindow.setContent(infoContent);
             infoWindow.open(map, marker);
         });
         marker.setMap(map);
-    },
-    openBikePanel: function(){
-        console.log('Fired');
-        window.openBikePanel(this, this.openBikePanel);
     },
     insertMap: function() {
     	var container = Ember.$('.map-canvas')[0];
@@ -50,7 +60,7 @@ export default Ember.Component.extend({
                 this.get('latitude'),
                 this.get('longitude')
             ),
-            zoom: 15
+            zoom: 13
         };
 
         window.map = new window.google.maps.Map(container, options);
@@ -62,9 +72,13 @@ export default Ember.Component.extend({
 
     }.on('didInsertElement'),
 
+    setCoords: function(lat, lng){
+        this.set('latitude', lat);
+        this.set('longitude', lng);
+        this.insertMap();
+    },
+
     actions: {
-        openBikePanel: function(id){
-            console.log('Bike'+ id);
-        }
+
     }
 });

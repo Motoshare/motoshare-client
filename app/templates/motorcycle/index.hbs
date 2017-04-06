@@ -1,0 +1,81 @@
+<div class="appBody">
+<div class="container">
+  <h2>{{model.year}} {{model.make}} {{model.model}}</h2>
+    <div class="row">
+      <div class="panel panel-default col-md-8">
+        <div class="panel-body">
+        {{#swiper-container 
+        pagination=true 
+        loop=true
+        prevButton=".swiper-prev"
+        nextButton=".swiper-next"}}
+        {{#each model.media as |photo|}}
+        {{#swiper-slide}}<img src="{{photo}}" class="img-responsive"/>{{/swiper-slide}}
+        {{/each}}
+        {{/swiper-container}}
+        <div class="bumpdown">
+        <button class="btn btn-default swiper-prev"><i class="fa fa-lg fa-arrow-circle-o-left" aria-hidden="true"></i></button>
+        <button class="btn btn-default swiper-next pull-right"><i class="fa fa-lg fa-arrow-circle-o-right" aria-hidden="true"></i></button>
+        </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h5>Description:</h5>
+        <p>{{model.description}}</p>
+        <h5>Color:</h5>
+        <p>{{model.color}}</p>
+        <h5>Category:</h5>
+        <p>{{model.category}}</p>
+        <h5>Available Dates:</h5>
+        <p>{{model.availabledates.startDate}} – {{model.availabledates.endDate}}</p>
+      </div>
+      <div class="col-md-8">
+{{!--       	{{#link-to 'motorcycle.edit' model}}
+      	<div class="btn btn-warning pull-right">Edit</div>
+      	{{/link-to}} --}}
+    {{#if isUser}}
+ {{#ember-remodal forService=true title='Photo Upload' as |m| }}
+    {{#m.open}}
+      <button type="submit" class="btn btn-warning pull-right">Add Photos   <i class="fa fa-camera" aria-hidden="true"></i></button>
+    {{/m.open}}
+
+<form>
+  <div class="form-group">
+  	<div class="hide">{{model.id}}</div>
+
+  <div class="form-group">
+    <label for="photo"></label>
+      <div class="form-group">
+      	<div class="file-input-wrapper">
+  <button class="btn btn-warning">Select Photo</button>
+      	{{file-upload url="" onProgress="fileUploadProgress" onComplete="fileUploadComplete" class="upload" uid=model.id }}</div>
+  </div>
+  </div>
+</div>
+
+<div class="progress">
+  <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar"
+  aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{uploadPercentage}}%">
+    
+  </div>
+</div>
+</form> 
+
+
+
+    <div class="actions">
+      {{#m.cancel}}
+        <button class="btn btn-danger">Cancel</button>
+      {{/m.cancel}}
+    </div>
+  {{/ember-remodal}}
+  {{/if}}
+  {{#link-to 'motorcycle.rental' model}}
+  <div class="btn btn-warning">Rent This Motorcycle</div>
+{{/link-to}}
+      </div>
+    </div>
+
+
+</div>
+</div>

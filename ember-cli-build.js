@@ -5,7 +5,14 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     // Add options here
-    storeConfigInMeta: false
+    storeConfigInMeta: false,
+    babel: {
+      includePolyfill: true
+    },
+    sourcemaps: {
+    enabled: EmberApp.env() !== 'production',
+    extensions: ['css']
+  }
   });
 
   // Use `app.import` to add additional libraries to the generated

@@ -18,16 +18,21 @@ module.exports = function(environment) {
       // when it is created
     }
   };
-  
+  ENV['ember-simple-auth'] = {
+  authorizer: 'authorizer:token',
+  crossOriginWhitelist: ['http://localhost:8080']
+  };
   ENV['ember-simple-auth-token'] = {
-    serverTokenEndpoint: 'https://motoshare-v1.appspot.com/api/login/',
+    routeAfterAuthentication: 'app/profile',
+    //serverTokenEndpoint: 'https://motoshare-v1.appspot.com/api/login/',
+    serverTokenEndpoint: 'http://localhost:8080/api/login/',
     identificationField: 'email',
     passwordField: 'password',
     tokenPropertyName: 'access_token',
     timeFactor: 1000,
     authorizationPrefix: 'Bearer ',
     authorizationHeaderName: 'Authorization',
-    headers: {},
+    //headers: {},
   };
 
   ENV.contentSecurityPolicy = {
@@ -42,7 +47,7 @@ module.exports = function(environment) {
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
+    ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
