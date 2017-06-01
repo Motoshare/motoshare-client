@@ -41,11 +41,11 @@ export default Ember.Controller.extend({
 			var make = this.get('make');
 			var model = this.get('model');
 			var cc = this.get('cc');
-			var VIN = this.get('vin');
-			var license = this.get('license');
+			//var VIN = this.get('vin');
+			//var license = this.get('license');
 			var category = document.getElementById('category').value;
-			var color = this.get('color');
-			var description = this.get('description');
+			//var color = this.get('color');
+			//var description = this.get('description');
 			var startDate = this.get('setStart');
 			var endDate = this.get('setEnd');
 			var availableDates = {startDate, endDate};
@@ -62,12 +62,11 @@ export default Ember.Controller.extend({
 			const coords = await this.get('getCoords').call(this, street, city, state);
 			var latitude = this.get('latitude');
 			var longitude = this.get('longitude');
-			Ember.$.ajax('https://motoshare-v1.appspot.com/api/addmotorcycle', {
+			Ember.$.ajax('http://localhost:8080/api/addmotorcycle' /*'https://motoshare-v1.appspot.com/api/addmotorcycle'*/, {
 				type: 'POST',
 				contentType: 'application/json; charset=utf-8',
 				dataType: 'json',
-				data: JSON.stringify({year: year, make: make, model: model, cc: cc, VIN: VIN, LIC: license,
-									category: category, color: color, description: description, 
+				data: JSON.stringify({year: year, make: make, model: model, cc: cc, category: category, 
 									availableDates: availableDates, isCompleted: isCompleted, uid: uid,
 									latitude: latitude, longitude: longitude, price: price}),
 				beforeSend: xhr => {
@@ -79,7 +78,8 @@ export default Ember.Controller.extend({
 			}).then(function(message){
 				let route = message.next;
 				console.log(route);
-				_this.transitionToRoute('motorcycle.edit', route);
+				debugger;
+				_this.transitionToRoute('motorcycle', route);
 			});
 		}
 	}

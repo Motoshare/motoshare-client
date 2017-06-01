@@ -78,6 +78,13 @@
   -webkit-justify-content: center;
   justify-content: center;
 }
+/*Text styles */
+.text-yellow {
+  color: #f0ad4e;
+}
+.text-yellow:hover{
+  color: #ca8e3a;
+}
 .btn-white-outline { 
   color: #fff; 
   background-color: #000; 
@@ -172,7 +179,7 @@ fieldset[disabled] .btn-white-outline.active {
 	color: #000;
 }
 .map-canvas{
-    height: 95vh;
+    height: 100vh;
   }
 /*Main Navigation*/
 .navbar{
@@ -258,7 +265,7 @@ fieldset[disabled] .btn-white-outline.active {
 }
 .add-bike button{ position: fixed; bottom: 25px; right: 25px; }
 .caption a {
-  color: #e8951e;
+  color: #e81001e;
   text-decoration: none;
 }
 .caption a:hover,
@@ -302,4 +309,28 @@ fieldset[disabled] .btn-white-outline.active {
 }
 .splash{
   margin-top: 20%;
+}
+
+/*Mobile Navbar styles */
+.mobilebar {
+  background: #eeeeee;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+  position: relative;
+  width: 100%;
+}
+
+.mobilebaritem {
+
+}
+.mobilebar a {
+  color: #777777;
+}
+.btn-mobilebar {
+  background-color: #eeeeee;
+  border-color: #eeeeee;
 }

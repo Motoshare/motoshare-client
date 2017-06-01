@@ -60,7 +60,7 @@ export default Ember.Component.extend({
                 this.get('latitude'),
                 this.get('longitude')
             ),
-            zoom: 13
+            zoom: 10
         };
 
         window.map = new window.google.maps.Map(container, options);

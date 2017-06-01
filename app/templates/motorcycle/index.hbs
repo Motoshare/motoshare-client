@@ -33,7 +33,7 @@
 {{!--       	{{#link-to 'motorcycle.edit' model}}
       	<div class="btn btn-warning pull-right">Edit</div>
       	{{/link-to}} --}}
-    {{#if isUser}}
+    {{#if session.isAuthenticated}}
  {{#ember-remodal forService=true title='Photo Upload' as |m| }}
     {{#m.open}}
       <button type="submit" class="btn btn-warning pull-right">Add Photos   <i class="fa fa-camera" aria-hidden="true"></i></button>
