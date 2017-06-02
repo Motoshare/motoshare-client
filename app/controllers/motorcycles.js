@@ -8,6 +8,7 @@ export default Ember.Controller.extend({
     this._super(...arguments);
     this.get('messageBus').subscribe('mapView', this, this.setMap);
     this.get('messageBus').subscribe('listView', this, this.setList);
+    this.get('messageBus').subscribe('menuOpen', this, this.menuUpdater);
     },
     
     isUser: function() {
@@ -19,6 +20,15 @@ export default Ember.Controller.extend({
     },
     setList: function() {
     	this.set('map', false);
+    },
+    menuUpdater: function(args) {
+        console.log(args);
+        if(args == true){
+            this.set('menuState', true);
+        }
+        if(args == false){
+            this.set('menuState', false);
+        }
     },
     actions: {
         invalidateSession() {
@@ -51,6 +61,9 @@ export default Ember.Controller.extend({
                 var lng = response.results[0].geometry.location.lng;
                 _this.get('messageBus').publish('setCoords', lat, lng);
             });
-        }
+        },
+        // menuToggle: function() {
+        //     this.toggleProperty('menuOpen');
+        // }
     }
 });

@@ -1,8 +1,17 @@
 import Ember from 'ember';
 import config from './config/environment';
+import { storageFor } from 'ember-local-storage';
 
 const Router = Ember.Router.extend({
-  location: config.locationType
+  location: config.locationType,
+  messageBus: Ember.inject.service('message-bus'),
+  state: storageFor('appstore'),
+
+  closeMenu: function () {
+    console.log('Route Transition closing menu.');
+    this.get('messageBus').publish('menuOpen', false);
+    this.set('state.menu', false);
+  }.on('didTransition'),
 });
 
 Router.map(function() {

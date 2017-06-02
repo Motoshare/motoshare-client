@@ -334,3 +334,47 @@ fieldset[disabled] .btn-white-outline.active {
   background-color: #eeeeee;
   border-color: #eeeeee;
 }
+/* Left Menu */
+.left-menu{
+  width: 250px;
+  background-color: #4a4a4a;
+  background: url('/assets/images/noise.png');
+  padding-left: 0px;
+  height: 100vh;
+}
+.left-menu a{
+  color: #fff;
+  text-decoration: none;
+}
+.left-menu a:hover{
+  color: #ffb938;
+  text-decoration: none;
+}
+.left-menu .active{
+  color: #ffb938;
+  text-decoration: none;
+}
+.left-menu h2 {
+    margin: 0;
+    padding: .5em;
+    color: #fff;
+    text-shadow: 0 0 1px rgba(0,0,0,.1);
+    font-size: 2em;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.left-menu ul{
+  padding-left: 0px;
+}
+.left-menu li {
+    margin: 0;
+    padding: .5em;
+    color: #fff;
+    text-shadow: 0 0 1px rgba(0,0,0,.1);
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    list-style: none;
+    text-align: center;
+}

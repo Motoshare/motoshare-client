@@ -51,6 +51,9 @@
   {{/burger.outlet}}
 {{/burger-menu}}
 {{else}}
+{{#if menuState}}
+{{in-left-toolbar show=(component "left-menu")}}
+{{/if}}
 {{#burger-menu as |burger|}}
   {{#burger.menu dismissOnItemClick="True" open=false itemTagName="li" as |menu|}}
     <a href="#" class="pull-right globalpadding"{{action burger.state.actions.close}}><i class="fa fa-lg fa-times" aria-hidden="true"></i></a>
@@ -87,9 +90,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-    <a href="#" class="navbar-brand"{{action burger.state.actions.toggle}}>
-    	<i class="fa fa-2x fa-bars" aria-hidden="true"></i>
-    </a>
+{{menu-burger}}
     <a href="#" class=""><img src="/assets/images/navbar_logo.png" height="50px"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
