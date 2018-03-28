@@ -9,7 +9,7 @@ export default Ember.Component.extend({
 	actions: {
 		menuToggle: function() {
 			var menu = this.get('state.menu');
-
+			console.log('This is clicked.');
 			if(menu === false){
 				this.toggleProperty('state.menu');
 				this.get('messageBus').publish('menuOpen', true);
